@@ -8,7 +8,7 @@ Informações do ambiente de desenvolvimento:
 **Funcionalidades da integração:**
 
  - Processar pagamentos dos pedidos - das lojas que utilizam a integração com o PagCompleto -
-   pagos com cartão de crédito.
+   pagos com cartão de crédito e atualizando a situação dos pedidos conforme retorno da API.
 
 # Executando a integração:
 
