@@ -6,6 +6,7 @@ class Order {
 
    public $id_pedido;
    public $id_gateway;
+   public $id_formapagto;
    public $valor_total;
    public $num_cartao;
    public $codigo_verificacao;
@@ -22,8 +23,11 @@ class Order {
    public $situation;
    public $transactionResponse;
 
+   public $orderRequire;
+
    private $creditCard = 3;
    private $waitingForPayment = 1;
+   private $orderPaid = 2;
    private $PagCompleto = 1;
 
    public function __construct($order = null) {
@@ -41,9 +45,25 @@ class Order {
       $this->orders = null;
    }
 
-   public function isShopUsingPagcompleto() {
-      if ($this->id_gateway == $this->PagCompleto) {
-         return true;
+   public function requireShopUsingPagcompleto() {
+      if ($this->id_gateway != $this->PagCompleto) {
+         $this->orderRequire .= "- Esta loja não utiliza integração com o PagCompleto. </br>";
+      }
+   }
+
+   public function requireCreditCardPaid() {
+      if ($this->id_formapagto != $this->creditCard) {
+         $this->orderRequire .= "- O pedido não foi pago com cartão de crédito. </br>";
+      }
+   }
+
+   public function requireWaitingForPayment() {
+      
+      if ($this->id_situacao == $this->orderPaid) {
+         $this->orderRequire .= "- Este pedido já foi processado. </br>";
+      }
+      else if ($this->id_situacao != $this->waitingForPayment) {
+         $this->orderRequire .= "- Para ser processado o pedido deve estar aguardando pagamento </br>";
       }
    }
 

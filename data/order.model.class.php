@@ -6,8 +6,6 @@ class ModelOrder {
    public $dateProcessed;
    
    public $id;
-   public $method;
-   public $status;
 
    private $conn;
 
@@ -32,13 +30,10 @@ class ModelOrder {
       INNER JOIN clientes on pedidos.id_cliente = clientes.id
       INNER JOIN pedidos_pagamentos on pedidos_pagamentos.id_pedido = pedidos.id
       INNER JOIN lojas_gateway ON clientes.id_loja = lojas_gateway.id_loja
-      WHERE pedidos.id = :order AND pedidos_pagamentos.id_formapagto = :paymentMethod 
-      AND pedidos.id_situacao = :paymentStatus";
+      WHERE pedidos.id = :order";
 
       $query = $this->conn->prepare($sql);
       $query->bindParam(':order', $this->id, PDO::PARAM_INT);
-      $query->bindParam(':paymentMethod', $this->method, PDO::PARAM_INT);
-      $query->bindParam(':paymentStatus', $this->status, PDO::PARAM_INT);
       $query->setFetchMode(PDO::FETCH_CLASS, "Order");
       $query->execute();
 
