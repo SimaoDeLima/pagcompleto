@@ -14,7 +14,7 @@ class Router {
    private $requestType = "";
 
    public function __construct($request) {
-      
+
       if ($request) {
 
          $this->setRequest($request);
@@ -24,7 +24,11 @@ class Router {
          }
 
          $this->execute();
+
+         return;
       }
+
+      die("Requisição não fornecida.");
    }
 
    public static function get($param) {
@@ -57,11 +61,25 @@ class Router {
    }
 
    private function getLocation() : string {
-      $requisition = self::$location[$this->getRequestType()][$this->getRequisition()];
-      return $requisition["load"];
+      
+      $href = "";
+
+      if (!empty(self::$location[$this->getRequestType()][$this->getRequisition()])) {
+         $requisition = self::$location[$this->getRequestType()][$this->getRequisition()];
+         $href = $requisition["load"];
+      }
+
+      return $href;
    }
 
    private function execute($preference = null) : void {
-      require "request/" . $this->getRequestType() . "/" . $this->getLocation();
+      
+      if ($this->getLocation()) {
+         
+         require "request/" . $this->getRequestType() . "/" . $this->getLocation();
+         return;
+      }
+
+      die("Não é possível processar esta requisição.");
    }
 }

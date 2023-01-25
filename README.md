@@ -1,16 +1,13 @@
-# PagCompleto API
-
-A partial PagCompleto API developed.
-
+# Integração com API PagCompleto
 
 Funcionalidades da integração:
 
- - Processar pagamentos via cartão de crédito
-
+ - Processar pagamentos de lojas que utilizam a integração com o PagCompleto dos 
+   pedidos pagos com cartão de crédito.
 
 # Executando a integração:
 
-Para executar a integração execute no browser o seguinte comando
+Para executar a integração, no browser, digite o seguinte comando:
 
 ?operation=processOrderPayment&order=:order
 
