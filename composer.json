@@ -1,0 +1,17 @@
+{
+    "name": "usuario/api-ecompleto",
+    "autoload": {
+        "psr-4": {
+            "Usuario\\ApiEcompleto\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Simão de Lima",
+            "email": "87878799+SimaoDeLima@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
