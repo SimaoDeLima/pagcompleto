@@ -1,9 +1,14 @@
 # Integração com API PagCompleto
 
-Funcionalidades da integração:
+Informações do ambiente de desenvolvimento:
 
- - Processar pagamentos de lojas que utilizam a integração com o PagCompleto dos 
-   pedidos pagos com cartão de crédito.
+- Versão do PHP: 8.2.0
+- Web Server: Apache
+
+**Funcionalidades da integração:**
+
+ - Processar pagamentos dos pedidos - das lojas que utilizam a integração com o PagCompleto -
+   pagos com cartão de crédito.
 
 # Executando a integração:
 
